@@ -1,2 +1,1 @@
-# template-mkdocs-material
-Example template for mkdocs-material
+# Example website for mkdocs-material

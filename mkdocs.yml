@@ -67,20 +67,23 @@ markdown_extensions:
       generic: true
   # - pymdownx.caret
   - pymdownx.mark
-  - pymdownx.critic
+  - pymdownx.tilde
+  - pymdownx.betterem:
+      smart_enable: all
+  # - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight
+  - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
   # - pymdownx.smartsymbols
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tilde
-
+  - pymdownx.snippets
 
 extra_javascript:
   - javascripts/config.js
@@ -90,3 +93,7 @@ extra_javascript:
 # Page tree
 nav:
   - Home: index.md
+  - About: about.md
+  - Markdown syntax:
+    - Basic markdown syntax: markdown/basic.md
+    - Advanced markdown syntax: markdown/advanced.md 

@@ -1,4 +1,4 @@
-name: My Python Project
+name: Build pages by MkDocs
 
 on: [push, pull_request]
 
@@ -11,7 +11,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x
+        python-version: 3.9
     - name: Install pipenv
       run: python -m pip install --upgrade pipenv wheel
     - name: Cache dependencies

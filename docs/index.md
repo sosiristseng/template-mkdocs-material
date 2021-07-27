@@ -1,6 +1,6 @@
 # Welcome to MkDocs
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+For full documentation visit [mkdocs.org](https://www.mkdocs.org) and [Material](https://squidfunk.github.io/mkdocs-material/) theme.
 
 ## Commands
 

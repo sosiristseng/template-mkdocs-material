@@ -12,8 +12,17 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org) and [Material]
 ## Project layout
 
 ```
-mkdocs.yml    # The configuration file.
+.gitlab-ci.yml  # GitLab CI/CD configurations
+.github/        # Github actions 
+    ...  
+
+mkdocs.yml      # The configuration file.
 docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+    index.md    # The documentation homepage.
+    ...         #  Other markdown pages, images and other files.
+overrides/
+    ...         # Override default templates if needed
+includes/  
+     examples.md # The files to be included in other files in `docs/`
+     ...
 ```

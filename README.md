@@ -1,11 +1,7 @@
-# Example website for mkdocs-material
+# Mkdocs material theme template
 
-## How to develop
+Features:
 
-1. Clone this repo
-2. Make sure you have [`pipenv`](https://pipenv.pypa.io/en/latest/) installed
-3. Go to the project directory and run `pipenv install` to install dependencies
-4. `pipenv run mkdocs serve` to start the live-reloading docs server.
-
-- Options are in `mkdocs.yml`.
-- Pages are in the `docs/` folder.
+- [Mkdocs](https://www.mkdocs.org/) turns `md` files into webpages.
+- GitHub actions publishes website when changes are committed.
+- Dependencie managed by [fdm](https://pdm.fming.dev/), a modern Python package manager with PEP 582 support.

@@ -1,0 +1,43 @@
+# Reference: https://gitlab.com/coherentminds/pdm-gitlab-example/-/blob/main/.gitlab-ci.yml
+
+image: python:3.8
+
+stages:
+  - test
+  - deploy
+
+variables:
+  SITE_URL: https://sosiristseng.gitlab.io/template-mkdocs-material/
+  REPO_URL: https://gitlab.com/sosiristseng/template-mkdocs-material/
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+before_script:
+  - pip install pdm brotli
+  - pdm install
+  - pdm run mkdocs build --site-dir public
+
+cache:
+  - key:
+      files:
+        - pdm.lock
+    paths:
+      - __pypackages__/
+      - .cache/pip
+
+test:
+  stage: test
+  except:
+  - main
+  script:
+  - echo "Nothing to do"
+
+pages:
+  stage: deploy
+  only:
+  - main
+  script:
+  - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec gzip   -f -k {} \; || echo 'Gzip failed. Skipping...'
+  - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec brotli -f -k {} \; || echo 'Brotli failed. Skipping...'
+  artifacts:
+    paths:
+    - public

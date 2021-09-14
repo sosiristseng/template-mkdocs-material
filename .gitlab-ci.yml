@@ -12,7 +12,8 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 before_script:
-  - pip install pdm brotli
+  - apt update -qq && apt install brotli -y
+  - pip install pdm
   - pdm install
   - pdm run mkdocs build --site-dir public
 

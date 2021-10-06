@@ -1,6 +1,6 @@
 # Reference: https://gitlab.com/coherentminds/pdm-gitlab-example/-/blob/main/.gitlab-ci.yml
 
-image: python:3.8
+image: frostming/pdm:latest
 
 stages:
   - test
@@ -12,8 +12,6 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 before_script:
-  - apt update -qq && apt install brotli -y
-  - pip install pdm
   - pdm install
   - pdm run mkdocs build --site-dir public
 
@@ -37,6 +35,7 @@ pages:
   only:
   - main
   script:
+  - apt-get update -qq && apt-get install gzip brotli -y
   - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec gzip   -f -k {} \; || echo 'Gzip failed. Skipping...'
   - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec brotli -f -k {} \; || echo 'Brotli failed. Skipping...'
   artifacts:

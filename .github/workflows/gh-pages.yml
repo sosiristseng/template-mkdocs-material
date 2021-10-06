@@ -11,7 +11,7 @@ jobs:
     - name: Set up PDM
       uses: pdm-project/setup-pdm@main
       with:
-        python-version: 3.8
+        python-version: 3.9
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
@@ -20,7 +20,7 @@ jobs:
         key: ${{ runner.os }}-pdm-${{ hashFiles('**/pdm.lock') }}
         restore-keys: |
           ${{ runner.os }}-pdm-
-          ${{ runner.os }}
+          ${{ runner.os }}-
     - name: Install dependencies
       run: pdm install
     - name: Build website

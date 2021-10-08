@@ -6,28 +6,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout master
-      uses: actions/checkout@v2
-    - name: Set up PDM
-      uses: pdm-project/setup-pdm@main
-      with:
-        python-version: 3.9
-    - name: Cache dependencies
+    - uses: actions/checkout@v2
+    - name: Cache python
       uses: actions/cache@v2
       with:
-        path: |
-          __pypackages__
-        key: ${{ runner.os }}-pdm-${{ hashFiles('**/pdm.lock') }}
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          ${{ runner.os }}-pdm-
-          ${{ runner.os }}-
-    - name: Install dependencies
-      run: pdm install
+          ${{ runner.os }}-pip-
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install Python Dependencies
+      run: |
+        pip install -r requirements.txt
     - name: Build website
-      run: pdm run mkdocs build --site-dir public
+      run: mkdocs build --site-dir public
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3.8.0
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: public
+        force_orphan: true
+        publish_dir: docs/_build/html

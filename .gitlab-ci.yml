@@ -1,6 +1,5 @@
 # Reference: https://gitlab.com/coherentminds/pdm-gitlab-example/-/blob/main/.gitlab-ci.yml
-
-image: frostming/pdm:latest
+image: python:3.9
 
 stages:
   - test
@@ -11,24 +10,23 @@ variables:
   REPO_URL: https://gitlab.com/sosiristseng/template-mkdocs-material/
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-before_script:
-  - pdm install
-  - pdm run mkdocs build --site-dir public
-
 cache:
   - key:
       files:
-        - pdm.lock
+        - requirements.txt
     paths:
-      - __pypackages__/
       - .cache/pip
+
+before_script:
+  - pip install -r requirements.txt
+  - mkdocs build --site-dir public
 
 test:
   stage: test
   except:
   - main
   script:
-  - echo "Nothing to do"
+  - echo "Test completed."
 
 pages:
   stage: deploy

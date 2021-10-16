@@ -4,5 +4,5 @@
 
 Features:
 
-- [Mkdocs](https://www.mkdocs.org/) turns `md` files into webpages.
-- GitHub actions publishes website when changes are committed.
+- [Mkdocs](https://www.mkdocs.org/) with the beautiful [material theme](https://squidfunk.github.io/mkdocs-material/) turns markdown (`.md`) files into webpages.
+- GitHub actions build and publish the website when changes are pushed.

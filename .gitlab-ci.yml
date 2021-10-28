@@ -1,5 +1,4 @@
-# Reference: https://gitlab.com/coherentminds/pdm-gitlab-example/-/blob/main/.gitlab-ci.yml
-image: python:3.9
+image: python:3.9-slim
 
 stages:
   - test
@@ -18,7 +17,7 @@ cache:
       - .cache/pip
 
 before_script:
-  - pip install -r requirements.txt
+  - python -m pip install -r requirements.txt
   - mkdocs build --site-dir public
 
 test:

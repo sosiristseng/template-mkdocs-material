@@ -33,12 +33,15 @@ theme:
   features:
     - navigation.instant
     - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
+    # - navigation.expand
     - navigation.top
-    - toc.integrate
+    - navigation.indexes # Not compatible with toc.integrate
+    # - toc.integrate
     - search.suggest
     - search.highlight
     - search.share
-
 
 # Social buttons at bottom
 extra:
@@ -56,13 +59,14 @@ extra:
 # https://python-markdown.github.io/extensions/
 # https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
-  - admonition
   - abbr
+  - admonition
   - attr_list
   - def_list
   - footnotes
   - meta
   - md_in_html
+  - tables
   - pymdownx.arithmatex:
       generic: true
   # - pymdownx.caret
@@ -70,20 +74,20 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.betterem:
       smart_enable: all
-  # - pymdownx.critic
+  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight
-  - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
   # - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.snippets
 
 extra_javascript:
   - javascripts/config.js

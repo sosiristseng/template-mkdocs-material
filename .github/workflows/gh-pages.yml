@@ -7,20 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Cache python
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-mkdocs-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-mkdocs-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - name: Install Python Dependencies
-      run: |
-        pip install -r requirements.txt
+        cache: 'pip'
+    - name: Install MkDocs Dependencies
+      run:  pip install -r requirements.txt
     - name: Build website
       run: mkdocs build --site-dir public
     - name: Deploy

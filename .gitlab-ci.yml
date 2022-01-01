@@ -1,8 +1,8 @@
 image: python:3.10-slim
 
 variables:
-  SITE_URL: https://sosiris-template/mkdocs-material/
-  REPO_URL: https://gitlab.com/sosiris-template/mkdocs-material/
+  SITE_URL: https://sosiris-templates.gitlab.io/mkdocs-material/
+  REPO_URL: https://gitlab.com/sosiris-templates/mkdocs-material/
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 cache:

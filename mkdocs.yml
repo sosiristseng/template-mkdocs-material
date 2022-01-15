@@ -1,10 +1,10 @@
 site_name: My MkDocs Template
-site_url: !ENV [SITE_URL, 'https://sosiris-templates.github.io/mkdocs-material/']
+site_url: !ENV [SITE_URL, 'https://sosiristseng.github.io/template-mkdocs-material/']
 site_author: Wen-Wei Tseng
 
 # Repository
-repo_url: !ENV [REPO_URL, 'https://github.com/sosiris-templates/mkdocs-material/'] 
-repo_name: sosiris-templates/mkdocs-material
+repo_url: !ENV [REPO_URL, 'https://github.com/sosiristseng/template-hugo-book/'] 
+repo_name: sosiristseng/template-hugo-book
 edit_uri: ""  # For example, 'edit/main/docs/' . Leave blank to disable the edit button,
 
 copyright: Copyright &copy; 2016 - 2021 Wen-Wei Tseng

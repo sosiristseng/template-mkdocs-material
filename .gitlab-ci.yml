@@ -2,8 +2,9 @@ image: python:3.10-slim
 
 variables:
   SITE_URL: https://sosiristseng.gitlab.io/template-mkdocs-material/
-  REPO_URL: https://gitlab.com/sosiristseng/template-hugo-book/
+  REPO_URL: https://gitlab.com/sosiristseng/template-mkdocs-material/
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
 
 cache:
   - key:
@@ -11,16 +12,19 @@ cache:
         - requirements.txt
     paths:
       - .cache/pip
+      - venv/
 
 before_script:
+  - python -m venv venv/
+  - source venv/bin/activate
   - python -m pip install -r requirements.txt
   - mkdocs build --site-dir public
 
-test:
+build:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
-  - echo "Test completed."
+  - echo "Build completed."
 
 pages:
   rules:

@@ -1,8 +1,8 @@
 image: python:3.10-slim
 
 variables:
-  SITE_URL: https://sosiristseng.gitlab.io/template-mkdocs-material/
-  REPO_URL: https://gitlab.com/sosiristseng/template-mkdocs-material/
+  SITE_URL: https://wwtemplates.gitlab.io/mkdocs-material/
+  REPO_URL: https://gitlab.com/wwtemplates/mkdocs-material/
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 
@@ -15,7 +15,7 @@ cache:
       - venv/
 
 before_script:
-  - python -m venv venv/
+  - python -m venv --upgrade-deps venv/
   - source venv/bin/activate
   - python -m pip install -r requirements.txt
   - mkdocs build --site-dir public

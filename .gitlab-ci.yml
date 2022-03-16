@@ -9,7 +9,7 @@ cache:
   - key:
       files:
         - requirements.txt
-      prefix: python-${PYTHON_VERSION}
+      prefix: python-3.10
     paths:
       - venv/
       - .cache/pip

@@ -21,10 +21,10 @@ jobs:
           cache: 'pip'
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-      - uses: actions/cache@v3
-        with:
-          key: ${{ github.ref }}
-          path: .cache
+      # - uses: actions/cache@v3
+      #   with:
+      #     key: ${{ github.ref }}
+      #     path: .cache
       - name: Build website for PRs
         if: github.ref != 'refs/heads/main'
         run: mkdocs build

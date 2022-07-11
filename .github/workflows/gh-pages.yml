@@ -1,13 +1,13 @@
 name: Build pages
 
-on: 
+on:
   push:
     branches: [main]
   pull_request:
-    branches: [main] 
+    branches: [main]
 
 env:
-  PYTHON_VERSION: "3.9"
+  PYTHON_VERSION: '3.10'
 
 jobs:
   build:
@@ -18,23 +18,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Restore Python virtualenv
-        uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-      - name: Download Pip cache
-        uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+          cache: 'pip'
       - name: Install Python dependencies if cache miss
-        run: |
-          pip install -r requirements.txt
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
-      - name: Build website
-        run: mkdocs build --site-dir public
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.8.0
-        if: github.ref == 'refs/heads/main'
+        run: pip install -r requirements.txt
+      - uses: actions/cache@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force_orphan: true
-          publish_dir: public
-          full_commit_message: ${{ github.event.head_commit.message }}
+          key: ${{ github.ref }}
+          path: .cache
+      - name: Build website
+        run: mkdocs build
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        run: mkdocs gh-deploy --force

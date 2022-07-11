@@ -25,8 +25,9 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - name: Build website
+      - name: Build website for PRs
+        if: github.ref != 'refs/heads/main'
         run: mkdocs build
-      - name: Deploy
+      - name: Deploy for main
         if: github.ref == 'refs/heads/main'
         run: mkdocs gh-deploy --force

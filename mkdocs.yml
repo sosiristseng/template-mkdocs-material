@@ -3,20 +3,22 @@ site_url: !ENV [SITE_URL, 'https://sosiristseng.github.io/template-mkdocs-materi
 site_author: Wen-Wei Tseng
 
 # Repository
-repo_url: !ENV [REPO_URL, 'https://github.com/sosiristseng/template-mkdocs-material/'] 
-repo_name: ww-templates/mkdocs-material
-edit_uri: ""  # For example, 'edit/main/docs/' . Leave blank to disable the edit button,
+repo_url: !ENV [REPO_URL, 'https://github.com/sosiristseng/template-mkdocs-material/']
+repo_name: 'sosiristseng/template-mkdocs-material'
+edit_uri: 'edit/main/docs/' # Leave blank to disable the edit button,
 
-copyright: Copyright &copy; 2016 - 2021 Wen-Wei Tseng
+copyright: Copyright &copy; 2016 - 2022 Wen-Wei Tseng
 
 # MkDocs plugins
 plugins:
   - search
+  - tags:
+      tags_file: tags.md
 
 # Theme configuration
+# https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
   name: material
-  custom_dir: overrides
   palette:
     - scheme: default
       primary: indigo
@@ -33,7 +35,7 @@ theme:
   features:
     - navigation.instant
     - navigation.tabs
-    - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     # - navigation.sections
     # - navigation.expand
     - navigation.top
@@ -54,8 +56,8 @@ extra:
       link: https://orcid.org/0000-0000-0000-0000
     - icon: fontawesome/solid/paper-plane
       link: mailto:a@b.com
-    
-# Extensions: 
+
+# Extensions:
 # https://python-markdown.github.io/extensions/
 # https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
@@ -67,6 +69,8 @@ markdown_extensions:
   - meta
   - md_in_html
   - tables
+  - toc:
+      permalink: true
   - pymdownx.arithmatex:
       generic: true
   # - pymdownx.caret
@@ -85,7 +89,8 @@ markdown_extensions:
   # - pymdownx.smartsymbols
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
 
@@ -99,5 +104,6 @@ nav:
   - Home: index.md
   - About: about.md
   - Markdown syntax:
-    - Basic markdown syntax: markdown/basic.md
-    - Advanced markdown syntax: markdown/advanced.md
+      - Basic markdown syntax: markdown/basic.md
+      - Advanced markdown syntax: markdown/advanced.md
+  - Tags: tags.md

@@ -1,9 +1,9 @@
 image: python:3.10-slim
 
 variables:
-  SITE_URL: https://wwtemplates.gitlab.io/mkdocs-material/
-  REPO_URL: https://gitlab.com/wwtemplates/mkdocs-material/
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  SITE_URL: https://sosiristseng.gitlab.io/mkdocs-material/
+  REPO_URL: https://gitlab.com/sosiristseng/mkdocs-material/
+  PIP_CACHE_DIR: '$CI_PROJECT_DIR/.cache/pip'
 
 cache:
   - key:
@@ -11,14 +11,11 @@ cache:
         - requirements.txt
       prefix: python-3.10
     paths:
-      - venv/
       - .cache/pip
 
 before_script:
-  - python -m venv --upgrade-deps venv/
-  - source venv/bin/activate
   - pip install -r requirements.txt
-  
+
 build:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
@@ -27,11 +24,11 @@ build:
 
 pages:
   rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
   script:
-  - mkdocs build --site-dir public
-  - apt-get update -qq && apt-get install gzip brotli -y
-  - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec gzip -f -k {} \; -exec brotli -f -k {} \; || echo 'Compression failed. Skipping...'
+    - mkdocs build --site-dir public
+    - apt-get update -qq && apt-get install gzip brotli -y
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|svg\|xml\)$' -exec gzip -f -k {} \; -exec brotli -f -k {} \; || echo 'Compression failed. Skipping...'
   artifacts:
     paths:
-    - public
+      - public

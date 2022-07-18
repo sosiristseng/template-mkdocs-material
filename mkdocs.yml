@@ -34,10 +34,10 @@ theme:
         name: Switch to light mode
   features:
     - navigation.instant
-    - navigation.tabs
+    # - navigation.tabs
     # - navigation.tabs.sticky
     # - navigation.sections
-    # - navigation.expand
+    - navigation.expand
     - navigation.top
     - navigation.indexes # Not compatible with toc.integrate
     # - toc.integrate
@@ -98,12 +98,11 @@ extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-# Page tree
-nav:
-  - Home: index.md
-  - About: about.md
-  - Markdown syntax:
-      - Basic markdown syntax: markdown/basic.md
-      - Advanced markdown syntax: markdown/advanced.md
-  - Tags: tags.md
+# # Nav bar
+# nav:
+#   - Home: index.md
+#   - About: about.md
+#   - Markdown syntax:
+#       - Basic markdown syntax: markdown/basic.md
+#       - Advanced markdown syntax: markdown/advanced.md
+#   - Tags: tags.md

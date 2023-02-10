@@ -1,3 +1,8 @@
+---
+tags:
+  - test
+---
+
 # Welcome to MkDocs
 
 For full documentation visit [mkdocs](https://www.mkdocs.org) and [MkDocs Material theme](https://squidfunk.github.io/mkdocs-material/) websites.

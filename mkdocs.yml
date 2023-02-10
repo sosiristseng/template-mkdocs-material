@@ -21,13 +21,15 @@ theme:
   name: material
   custom_dir: overrides
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: red
       accent: red
       toggle:
@@ -35,16 +37,23 @@ theme:
         name: Switch to light mode
   features:
     - navigation.instant
-    # - navigation.tabs
+    - navigation.tracking
+    - navigation.tabs
     # - navigation.tabs.sticky
-    # - navigation.sections
-    - navigation.expand
+    - navigation.sections
+    # - navigation.expand
     - navigation.top
     - navigation.indexes # Not compatible with toc.integrate
     # - toc.integrate
+    - toc.follow
     - search.suggest
     - search.highlight
     - search.share
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github-alt
 
 # Social buttons at bottom
 extra:
@@ -59,6 +68,7 @@ extra:
       link: mailto:a@b.com
 
 # Extensions:
+# https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/
 # https://python-markdown.github.io/extensions/
 # https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
@@ -67,13 +77,14 @@ markdown_extensions:
   - attr_list
   - def_list
   - footnotes
-  - meta
   - md_in_html
   - tables
   - toc:
       permalink: true
+      toc_depth: 4
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.betterem
   # - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
@@ -99,6 +110,10 @@ extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
 # # Nav bar
 # nav:
 #   - Home: index.md

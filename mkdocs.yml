@@ -7,7 +7,7 @@ repo_url: !ENV [REPO_URL, 'https://github.com/sosiristseng/template-mkdocs-mater
 repo_name: 'sosiristseng/template-mkdocs-material'
 edit_uri: 'edit/main/docs/' # Leave blank to disable the edit button,
 
-copyright: Copyright &copy; 2016 - 2022 Wen-Wei Tseng
+copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
 # MkDocs plugins
 plugins:
@@ -19,6 +19,7 @@ plugins:
 # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - scheme: default
       primary: indigo

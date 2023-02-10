@@ -8,16 +8,24 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-          cache: 'pip' # caching pip dependencies
+          python-version: '3.11'
+          cache: 'pip'
       - name: Install Python dependencies
         run: pip install -r requirements.txt
       - name: Setup Pages
@@ -27,13 +35,14 @@ jobs:
         run: mkdocs build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           path: ./site
 
   # Deployment job
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' }}
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write # to deploy to Pages

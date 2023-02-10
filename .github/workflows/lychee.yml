@@ -15,7 +15,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1.5.4
         id: lychee
         with:
-          args: '--accept 200,204,429 --verbose --no-progress content/'
+          args: '--accept 200,204,429 --verbose --no-progress docs/'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

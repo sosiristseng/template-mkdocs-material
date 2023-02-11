@@ -44,6 +44,7 @@ jobs:
         run: |
           echo "SITE_URL=${{ steps.pages.outputs.base_url }}" >> $GITHUB_ENV
           echo "REPO_URL=${{ github.server_url	}}/${{ github.repository }}" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
       - name: Build website
         run: mkdocs build
       - name: Upload artifact

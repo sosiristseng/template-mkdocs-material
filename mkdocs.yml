@@ -24,6 +24,8 @@ plugins:
   - search
   - tags:
       tags_file: tags.md
+  - minify:
+      minify_html: !ENV [CI, false]
 
 # Theme configuration
 # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/

@@ -23,7 +23,7 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 plugins:
   - search
   - tags:
-      tags_file: tags.md
+      tags_file: zz-tags.md
       enabled: !ENV [CI, false]
 
 # Theme configuration
@@ -34,8 +34,8 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: blue grey
+      accent: blue grey
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
@@ -47,23 +47,23 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.tabs
-    # - navigation.tabs.sticky
-    - navigation.sections
-    # - navigation.expand
-    - navigation.top
-    - navigation.indexes # Not compatible with toc.integrate
-    - navigation.footer
-    # - toc.integrate
-    - toc.follow
-    - search.suggest
-    - search.highlight
-    - search.share
     - content.action.edit
     - content.code.annotate
     - content.code.copy
+    - navigation.footer
+    - navigation.indexes # Not compatible with toc.integrate
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - navigation.expand
+    # - navigation.tabs.sticky
+    # - toc.integrate
   icon:
     repo: fontawesome/brands/github-alt
 
@@ -97,13 +97,12 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem
-  - pymdownx.magiclink
   # - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.critic
+  # - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -111,6 +110,10 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      user: 'sosiristseng'
+      repo: 'template-mkdocs-material'
   # - pymdownx.smartsymbols
   - pymdownx.snippets
   - pymdownx.superfences
@@ -126,4 +129,3 @@ extra_javascript:
 
 extra_css:
   - _stylesheets/extra.css
-

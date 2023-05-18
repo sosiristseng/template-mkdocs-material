@@ -21,31 +21,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup Python ${{ env.PYTHON_VER }}
         uses: actions/setup-python@v4
         id: python
         with:
           python-version: ${{ env.PYTHON_VER }}
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-        with:
-          requirement_files: requirements.txt  # this is optional
-      - uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
-        # the package installation will only be executed when the
-        # requirements-files have changed.
+          cache: 'pip'
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: Setup env variable
-        run: |
-          echo "SITE_URL=${{ steps.pages.outputs.base_url }}" >> $GITHUB_ENV
-          echo "REPO_URL=${{ github.server_url	}}/${{ github.repository }}" >> $GITHUB_ENV
-          echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
       - name: Build website
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          REPO_URL: ${{ github.server_url	}}/${{ github.repository }}
+          REPO_NAME: ${{ github.repository }}
         run: mkdocs build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

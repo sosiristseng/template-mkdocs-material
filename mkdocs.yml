@@ -10,6 +10,7 @@ edit_uri: 'edit/main/docs/' # Leave blank to disable the edit button,
 copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
 # # Nav bar
+# # Uncomment to customize nav bar
 # nav:
 #   - Home: index.md
 #   - About: about.md
@@ -18,13 +19,15 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 #       - Advanced markdown syntax: markdown/advanced.md
 #   - Tags: tags.md
 
-
 # MkDocs plugins
 plugins:
   - search
   - tags:
       tags_file: zz-tags.md
       enabled: !ENV [CI, false]
+  - git-revision-date-localized:
+      enabled: !ENV [CI, false]
+      enable_creation_date: !ENV [CI, false]
 
 # Theme configuration
 # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/

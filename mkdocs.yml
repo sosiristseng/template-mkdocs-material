@@ -26,7 +26,7 @@ plugins:
   - search
   - roamlinks
   - tags:
-      tags_file: zz-tags.md
+      tags_file: tags.md
       enabled: !ENV [CI, false]
   - git-revision-date-localized:
       enabled: !ENV [CI, false]

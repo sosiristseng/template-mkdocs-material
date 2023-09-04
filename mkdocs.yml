@@ -9,19 +9,22 @@ edit_uri: 'edit/main/docs/' # Leave blank to disable the edit button,
 
 copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
-# # Nav bar
-# # Uncomment to customize nav bar
-# nav:
-#   - Home: index.md
-#   - About: about.md
-#   - Markdown syntax:
-#       - Basic markdown syntax: markdown/basic.md
-#       - Advanced markdown syntax: markdown/advanced.md
-#   - Tags: tags.md
+# Nav bar
+# Uncomment to customize nav bar
+nav:
+  - Home: index.md
+  - About: about.md
+  - Blog:
+    - blog/index.md
+  - Markdown syntax:
+      - Basic markdown syntax: markdown/basic.md
+      - Advanced markdown syntax: markdown/advanced.md
+  - Tags: tags.md
 
 # MkDocs plugins
 plugins:
   - search
+  - roamlinks
   - tags:
       tags_file: zz-tags.md
       enabled: !ENV [CI, false]

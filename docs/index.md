@@ -30,3 +30,7 @@ includes/
      examples.md # The files to be included in other files in `docs/`
      ...
 ```
+
+## Tags
+
+[TAGS]

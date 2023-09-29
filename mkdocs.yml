@@ -25,11 +25,11 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 plugins:
   - blog:
       enabled: true
-      blog_dir: blog
+      blog_dir: 00-blog
   - search
   - roamlinks
   - tags:
-      tags_file: tags.md
+      tags_file: zz-tags.md
       enabled: !ENV [CI, false]
   - git-revision-date-localized:
       enabled: !ENV [CI, false]

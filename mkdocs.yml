@@ -23,6 +23,7 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
 # MkDocs plugins
 plugins:
+  - blog
   - search
   - roamlinks
   - tags:

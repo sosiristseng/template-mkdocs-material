@@ -11,15 +11,15 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
 # Nav bar
 # Uncomment to customize nav bar
-nav:
-  - Home: index.md
-  - About: about.md
-  - Blog:
-    - blog/index.md
-  - Markdown syntax:
-      - Basic markdown syntax: markdown/basic.md
-      - Advanced markdown syntax: markdown/advanced.md
-  - Tags: tags.md
+# nav:
+#   - Home: index.md
+#   - About: about.md
+#   - Blog:
+#     - blog/index.md
+#   - Markdown syntax:
+#       - Basic markdown syntax: markdown/basic.md
+#       - Advanced markdown syntax: markdown/advanced.md
+#   - Tags: tags.md
 
 # MkDocs plugins
 plugins:
@@ -106,7 +106,6 @@ markdown_extensions:
       toc_depth: 4
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.betterem
   # - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde

@@ -74,6 +74,9 @@ theme:
   icon:
     repo: fontawesome/brands/github-alt
 
+exclude_docs: |
+  drafts/            # A "drafts" directory anywhere.
+
 # Social buttons at bottom
 extra:
   social:

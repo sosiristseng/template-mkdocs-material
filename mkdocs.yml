@@ -28,6 +28,7 @@ plugins:
       blog_dir: blog
   - search
   - roamlinks
+  - callouts
   - tags:
       tags_file: index.md
       enabled: !ENV [CI, false]

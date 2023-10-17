@@ -27,7 +27,7 @@ plugins:
       enabled: true
       blog_dir: blog
   - search
-  - roamlinks
+  - ezlinks
   - callouts
   - tags:
       tags_file: index.md

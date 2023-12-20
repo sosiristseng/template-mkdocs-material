@@ -19,6 +19,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,7 +44,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main'}}
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./public
+          path: ./site
 
   # Deployment job
   deploy:

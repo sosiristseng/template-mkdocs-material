@@ -48,7 +48,7 @@ jobs:
           echo "VIRTUAL_ENV=${{ env.VENV }}" >> $GITHUB_ENV
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Build website
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}

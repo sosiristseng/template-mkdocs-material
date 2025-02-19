@@ -7,7 +7,7 @@ repo_url: !ENV [REPO_URL, 'https://github.com/sosiristseng/template-mkdocs-mater
 repo_name: !ENV [REPO_NAME, 'sosiristseng/template-mkdocs-material']
 edit_uri: 'edit/main/docs/' # Leave blank to disable the edit button,
 
-copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
+copyright: Copyright &copy; 2016 - 2025 Wen-Wei Tseng
 
 # Nav bar
 # Uncomment to customize nav bar
@@ -23,12 +23,13 @@ copyright: Copyright &copy; 2016 - 2023 Wen-Wei Tseng
 
 # MkDocs plugins
 plugins:
-  - blog:
-      enabled: true
-      blog_dir: blog
   - search
   - ezlinks
   - callouts
+  - blog:
+      enabled: true
+      blog_dir: blog
+      archive_date_format: yyyy-MM
   - tags:
       tags_file: index.md
       enabled: !ENV [CI, false]
@@ -60,6 +61,8 @@ theme:
     - content.action.edit
     - content.code.annotate
     - content.code.copy
+    - content.tabs.link
+    - content.tooltips
     - navigation.footer
     # - navigation.indexes # Not compatible with toc.integrate
     - navigation.instant
@@ -76,12 +79,11 @@ theme:
     - toc.follow
     # - toc.integrate
     # - navigation.expand
-
   icon:
     repo: fontawesome/brands/github-alt
 
 exclude_docs: |
-  drafts/            # A "drafts" directory anywhere.
+  drafts/
 
 # Social buttons at bottom
 extra:
@@ -116,13 +118,17 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.betterem:
-      smart_enable: all
+      smart_enable:
+  - pymdownx.blocks.caption
   # - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -139,8 +145,10 @@ markdown_extensions:
 
 extra_javascript:
   - _javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - _stylesheets/extra.css
+
+watch:
+  - includes

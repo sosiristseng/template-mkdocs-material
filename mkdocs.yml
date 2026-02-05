@@ -26,8 +26,6 @@ plugins:
   - search
   - ezlinks
   - callouts
-  - optimize:
-      enabled: !ENV [CI, false]
   - blog:
       enabled: true
       blog_dir: blog

@@ -26,14 +26,11 @@ plugins:
   - search
   - ezlinks
   - callouts
-  - optimize:
-      enabled: !ENV [CI, false]
   - blog:
       enabled: true
       blog_dir: blog
       archive_date_format: yyyy-MM
   - tags:
-      tags_file: index.md
       enabled: !ENV [CI, false]
       tags_hierarchy: true
   - git-revision-date-localized:

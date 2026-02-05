@@ -26,6 +26,8 @@ plugins:
   - search
   - ezlinks
   - callouts
+  - optimize:
+      enabled: !ENV [CI, false]
   - blog:
       enabled: true
       blog_dir: blog
@@ -33,6 +35,7 @@ plugins:
   - tags:
       tags_file: index.md
       enabled: !ENV [CI, false]
+      tags_hierarchy: true
   - git-revision-date-localized:
       enabled: !ENV [CI, false]
       enable_creation_date: !ENV [CI, false]
@@ -61,12 +64,15 @@ theme:
     - content.action.edit
     - content.code.annotate
     - content.code.copy
+    - content.footnote.tooltips
     - content.tabs.link
     - content.tooltips
     - navigation.footer
     # - navigation.indexes # Not compatible with toc.integrate
     - navigation.instant
+    - navigation.instant.prefetch
     - navigation.instant.progress
+    - navigation.path
     - navigation.prune
     - navigation.sections
     - navigation.tabs

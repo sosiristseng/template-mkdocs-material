@@ -20,18 +20,18 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # full history
       - name: Install pngquant
         run: sudo apt-get update && sudo apt-get install -y pngquant
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         id: setup-python
         with:
           python-version: '3.x'
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           version: "latest"
       - name: Install Python dependencies
@@ -47,7 +47,7 @@ jobs:
         run: mkdocs build
       - name: Upload page artifact
         if: ${{ github.ref == 'refs/heads/main'}}
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
 
